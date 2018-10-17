@@ -18,9 +18,9 @@
 		<div class="caixa-numero resultado">
 			Resultado: <span id="resultado"></span>
 		</div>
-		<button onclick="Somar()" class="botao">Somar</button>
-		<button onclick="Subtrair()" class="botao">Subtrair</button>
-		<button onclick="Multiplicar()" class="botao">Multiplicar</button>
+		<button class="botao" id="Somar" class="botao">Somar</button>
+		<button class="botao" id="Subtrair" class="botao">Subtrair</button>
+		<button class="botao" id="Multiplicar" class="botao">Multiplicar</button>
 		<button class="botao" id="Dividir" class="botao">Dividir</button>
 		<button class="botao" id="Limpar" class="botao">Limpar</button>
 
@@ -44,15 +44,15 @@
 		input_html.addEventListener('blur', function(evento) {
 			var entrada_usuario = evento.target.value
 			if(isNaN(entrada_usuario) || !isFinite(entrada_usuario)) {
-				evento.target.value = ' '
+				evento.target.value = ''
 		}
 		})
 	})
 
 	document.querySelector('#Limpar').addEventListener('click', function Limpar() {
-		n1.value = ' '
-		n2.value = ' '
-		tag_resultado.textContent = ' '
+		n1.value = ''
+		n2.value = ''
+		tag_resultado.textContent = ''
 	})
 
 	document.querySelector('#Dividir').addEventListener('click', Dividir)
@@ -101,3 +101,6 @@
 
 </script>
 </html>
+Fim da conversa no bate-papo
+Digite uma mensagem...
+
