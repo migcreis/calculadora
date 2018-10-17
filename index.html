@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+<body>
+	<h1>Calculadora</h1>
+	
+		<div class="caixa-numero">
+			<label>Numero 1: </label>
+			<input id="n1" type="text" name="n1"><br/>
+		</div>
+		<div class="caixa-numero">
+			<label>Numero 2: </label>
+			<input id="n2" type="text" name="n2"><br/>
+		</div>
+		<div class="caixa-numero resultado">
+			Resultado: <span id="resultado"></span>
+		</div>
+		<button onclick="Somar()" class="botao">Somar</button>
+		<button onclick="Subtrair()" class="botao">Subtrair</button>
+		<button onclick="Multiplicar()" class="botao">Multiplicar</button>
+		<button class="botao" id="Dividir" class="botao">Dividir</button>
+		<button class="botao" id="Limpar" class="botao">Limpar</button>
+
+</body>
+<script type="text/javascript">
+	var n1 = document.querySelector('#n1')
+	var n2 = document.querySelector('#n2')
+	var tag_resultado = document.querySelector('#resultado')
+
+	document.querySelectorAll('input').forEach(function (input_html) {
+		console.log(input_html)
+
+		input_html.addEventListener('mousemove', function(evento) {
+			evento.target.style.border = '1px solid red'
+		})
+
+		input_html.addEventListener('mouseleave', function(evento) {
+			evento.target.style.border = '1px solid #eee'
+		})
+
+		input_html.addEventListener('blur', function(evento) {
+			var entrada_usuario = evento.target.value
+			if(isNaN(entrada_usuario) || !isFinite(entrada_usuario)) {
+				evento.target.value = ' '
+		}
+		})
+	})
+
+	document.querySelector('#Limpar').addEventListener('click', function Limpar() {
+		n1.value = ' '
+		n2.value = ' '
+		tag_resultado.textContent = ' '
+	})
+
+	document.querySelector('#Dividir').addEventListener('click', Dividir)
+
+	document.querySelector('#Somar').addEventListener('click', Somar)
+
+	document.querySelector('#Subtrair').addEventListener('click', Subtrair)
+
+	document.querySelector('#Multiplicar').addEventListener('click', Multiplicar)
+
+	function Dividir() {
+		var resultado = parseInt(n1.value) / parseInt(n2.value)
+		if(isNaN(resultado) || !isFinite(resultado)) {
+			alert('error')
+			return
+		}
+		tag_resultado.textContent = resultado
+	}
+
+	function Somar() {
+		var resultado = parseInt(n1.value) + parseInt(n2.value)
+		if(isNaN(resultado) || !isFinite(resultado)) {
+			alert('error')
+			return
+		}
+		tag_resultado.textContent = resultado
+	}
+
+	function Subtrair() {
+		var resultado = parseInt(n1.value) - parseInt(n2.value)
+		if(isNaN(resultado) || !isFinite(resultado)) {
+			alert('error')
+			return
+		}
+		tag_resultado.textContent = resultado
+	}
+
+	function Multiplicar() {
+		var resultado = parseInt(n1.value) * parseInt(n2.value)
+		if(isNaN(resultado) || !isFinite(resultado)) {
+			alert('error')
+			return
+		}
+		tag_resultado.textContent = resultado
+	}
+
+</script>
+</html>
